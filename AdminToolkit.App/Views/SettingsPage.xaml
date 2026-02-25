@@ -12,31 +12,23 @@
 
             <TextBlock Text="Settings" FontSize="28" FontWeight="SemiBold" Margin="0,0,0,24" />
 
-            <!-- Auth Settings -->
+            <!-- Tenant -->
             <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
                     CornerRadius="8" Padding="24" Margin="0,0,0,20">
                 <StackPanel>
-                    <TextBlock Text="Authentication" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,4" />
+                    <TextBlock Text="Default Tenant" FontWeight="SemiBold" FontSize="16" Margin="0,0,0,4" />
                     <TextBlock Opacity="0.5" TextWrapping="Wrap" Margin="0,0,0,16" LineHeight="20">
-                        This app uses a well-known Microsoft public client ID by default.
-                        No app registration is required. Just sign in with your admin account.
-                        If you have your own registered app, you can override the Client ID below.
+                        Use 'organizations' for MSP multi-tenant sign-in, or enter a
+                        specific tenant ID / domain (e.g. contoso.onmicrosoft.com) to
+                        default to one customer.
                     </TextBlock>
 
-                    <TextBlock Text="Client ID (optional override)" Opacity="0.7" FontSize="12" Margin="0,0,0,4" />
-                    <ui:TextBox Text="{Binding ClientId, UpdateSourceTrigger=PropertyChanged}"
-                                PlaceholderText="14d82eec-204b-4c2f-b7e8-296a70dab67e"
-                                Margin="0,0,0,16" />
-
-                    <TextBlock Text="Default Tenant" Opacity="0.7" FontSize="12" Margin="0,0,0,4" />
-                    <TextBlock Text="Use 'organizations' for MSP multi-tenant, or enter a specific tenant ID/domain."
-                               Opacity="0.5" FontSize="11" Margin="0,0,0,4" TextWrapping="Wrap" />
                     <ui:TextBox Text="{Binding TenantId, UpdateSourceTrigger=PropertyChanged}"
                                 PlaceholderText="organizations"
                                 Margin="0,0,0,16" />
 
-                    <ui:Button Content="Save Settings" Appearance="Primary"
-                               Command="{Binding SaveSettingsCommand}" MinWidth="160" />
+                    <ui:Button Content="Save" Appearance="Primary"
+                               Command="{Binding SaveSettingsCommand}" MinWidth="120" />
                 </StackPanel>
             </Border>
 
@@ -53,7 +45,7 @@
                 </DockPanel>
             </Border>
 
-            <!-- Info -->
+            <!-- About -->
             <Border Background="{DynamicResource ControlFillColorDefaultBrush}"
                     CornerRadius="8" Padding="24">
                 <StackPanel>

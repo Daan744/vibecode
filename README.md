@@ -9,7 +9,7 @@ A modern Windows desktop application for Microsoft 365 administration built with
 - **Groups** — List, search, create groups, add/remove members
 - **Shared Mailboxes** — Placeholder with Exchange Online PowerShell integration path
 - **Script Runbook** — Load PowerShell scripts with JSON manifests, auto-generate parameter forms, live output capture, execution history (SQLite), CSV export
-- **Settings** — Configure Azure App Registration (Client ID, Tenant ID), theme toggle
+- **Settings** — Default tenant, theme toggle
 
 ## Tech Stack
 
@@ -24,30 +24,9 @@ A modern Windows desktop application for Microsoft 365 administration built with
 
 - Windows 10/11
 - .NET 8.0 SDK ([download](https://dotnet.microsoft.com/download/dotnet/8.0))
-- Visual Studio 2022 (17.8+) or Rider
-- An Azure AD / Entra ID tenant with admin access
 
-## Azure App Registration
-
-1. Go to [Azure Portal → Entra ID → App registrations](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps)
-2. Click **New registration**
-3. Configure:
-   - **Name**: `O365 Admin Toolkit`
-   - **Supported account types**: *Accounts in this organizational directory only* (single tenant) or *Accounts in any organizational directory* (multi-tenant)
-   - **Redirect URI**: Select **Public client/native (mobile & desktop)** and enter: `http://localhost`
-4. After creation, note the **Application (client) ID** and **Directory (tenant) ID**
-5. Go to **API permissions** → **Add a permission** → **Microsoft Graph** → **Delegated permissions**:
-   - `User.ReadWrite.All`
-   - `Group.ReadWrite.All`
-   - `GroupMember.ReadWrite.All`
-   - `Directory.ReadWrite.All`
-6. Click **Grant admin consent** for your tenant
-
-### Enter these values in the app
-
-Go to **Settings** in the app and enter your Client ID and Tenant ID, then click **Save Auth Settings**.
-
-Alternatively, the default Client ID (`14d82eec-...`) is the Microsoft Graph Command Line Tools public client, which works for testing with limited scopes.
+No Azure App Registration is required. The app uses a well-known Microsoft public client ID
+and works out of the box with any Entra ID tenant. Just sign in with your admin account.
 
 ## Build & Run
 

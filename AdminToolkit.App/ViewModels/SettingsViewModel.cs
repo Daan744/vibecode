@@ -12,7 +12,6 @@ public partial class SettingsViewModel : ObservableObject
     private readonly AuthService _auth;
     private readonly ISnackbarService _snackbar;
 
-    [ObservableProperty] private string _clientId;
     [ObservableProperty] private string _tenantId;
     [ObservableProperty] private bool _isDarkTheme = true;
 
@@ -20,18 +19,16 @@ public partial class SettingsViewModel : ObservableObject
     {
         _auth = auth;
         _snackbar = snackbar;
-        _clientId = auth.ClientId;
         _tenantId = auth.TenantId;
     }
 
     [RelayCommand]
     private void SaveSettings()
     {
-        _auth.ClientId = ClientId;
-        _auth.TenantId = TenantId;
+        _auth.TenantId = string.IsNullOrWhiteSpace(TenantId) ? "organizations" : TenantId.Trim();
         _auth.ReconfigureClient();
 
-        _snackbar.Show("Settings saved", "Auth settings updated. Please sign in again.", ControlAppearance.Success, null, TimeSpan.FromSeconds(3));
+        _snackbar.Show("Settings saved", "Default tenant updated. Please sign in again.", ControlAppearance.Success, null, TimeSpan.FromSeconds(3));
     }
 
     [RelayCommand]
