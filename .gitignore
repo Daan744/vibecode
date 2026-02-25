@@ -3,6 +3,7 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+
 # dotenv files
 .env
 
@@ -424,7 +425,7 @@ test-results/
 
 # Mac bundle stuff
 *.dmg
-*.app
+# *.app -- disabled: conflicts with AdminToolkit.App/ project directory
 
 # content below from: https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
 # General
@@ -482,3 +483,13 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# ──────────────────────────────────────────────
+# Project overrides: ensure our source is tracked
+# ──────────────────────────────────────────────
+!AdminToolkit.App/
+!AdminToolkit.App/**
+
+# But still ignore build output inside the project
+AdminToolkit.App/bin/
+AdminToolkit.App/obj/

@@ -1,0 +1,70 @@
+<ui:FluentWindow x:Class="AdminToolkit.App.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:views="clr-namespace:AdminToolkit.App.Views"
+    Title="O365 Admin Toolkit"
+    Width="1400" Height="900"
+    MinWidth="1000" MinHeight="600"
+    ExtendsContentIntoTitleBar="True"
+    WindowBackdropType="Mica"
+    WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar Grid.Row="0" Title="O365 Admin Toolkit" ShowMaximize="True" ShowMinimize="True" />
+
+        <Grid Grid.Row="1">
+            <ui:NavigationView
+                x:Name="RootNavigation"
+                PaneDisplayMode="Left"
+                IsBackButtonVisible="Collapsed"
+                IsPaneToggleVisible="True"
+                OpenPaneLength="240">
+
+                <ui:NavigationView.MenuItems>
+                    <ui:NavigationViewItem Content="Dashboard" TargetPageType="{x:Type views:DashboardPage}">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="Home24" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem Content="Users" TargetPageType="{x:Type views:UsersPage}">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="People24" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem Content="Groups" TargetPageType="{x:Type views:GroupsPage}">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="PeopleTeam24" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem Content="Shared Mailboxes" TargetPageType="{x:Type views:SharedMailboxesPage}">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="Mail24" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                    <ui:NavigationViewItem Content="Runbook" TargetPageType="{x:Type views:RunbookPage}">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="Code24" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                </ui:NavigationView.MenuItems>
+
+                <ui:NavigationView.FooterMenuItems>
+                    <ui:NavigationViewItem Content="Settings" TargetPageType="{x:Type views:SettingsPage}">
+                        <ui:NavigationViewItem.Icon>
+                            <ui:SymbolIcon Symbol="Settings24" />
+                        </ui:NavigationViewItem.Icon>
+                    </ui:NavigationViewItem>
+                </ui:NavigationView.FooterMenuItems>
+            </ui:NavigationView>
+
+            <ui:SnackbarPresenter x:Name="SnackbarPresenter" VerticalAlignment="Bottom" Margin="24" />
+            <ContentPresenter x:Name="RootContentDialogPresenter" />
+        </Grid>
+    </Grid>
+</ui:FluentWindow>
