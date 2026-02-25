@@ -1,0 +1,25 @@
+{
+  "name": "Add User to Group",
+  "description": "Adds a user to a security or M365 group using Microsoft Graph PowerShell.",
+  "scriptFile": "Example-AddGroupMember.ps1",
+  "requiredModules": ["Microsoft.Graph.Groups"],
+  "requiredPermissions": ["GroupMember.ReadWrite.All", "Group.ReadWrite.All"],
+  "parameters": [
+    {
+      "name": "GroupName",
+      "displayName": "Group Display Name",
+      "type": "string",
+      "required": true,
+      "default": "",
+      "description": "The display name of the target group"
+    },
+    {
+      "name": "UserPrincipalName",
+      "displayName": "User Principal Name",
+      "type": "string",
+      "required": true,
+      "default": "",
+      "description": "The UPN of the user to add (e.g. john@contoso.com)"
+    }
+  ]
+}
